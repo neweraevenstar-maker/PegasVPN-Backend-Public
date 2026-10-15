@@ -74,6 +74,40 @@ ownership, restrictive permissions and service environment loading
 before any changes. The SMTP key must never be entered into the
 public repository, a Codespace commit, GitHub Actions or chat.
 
+## Test Brevo delivery yourself on Windows (no Work, no server)
+
+This test **does not activate registration on production**. It sends one
+non-OTP test message directly from your own Windows PC to the existing
+corporate mailbox. You do **not** need Python, Codespaces, Work or SSH.
+
+1. Open [the PowerShell test script](scripts/brevo_smtp_windows.ps1) in
+   GitHub. Review it and download the **Raw** file as
+   `brevo_smtp_windows.ps1` into Windows Downloads.
+2. In **Windows PowerShell** run:
+
+   ```powershell
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Downloads\brevo_smtp_windows.ps1" -Send
+   ```
+
+   This policy flag applies to this child PowerShell process only; it does
+   not change system policy. Do not run an unreviewed or modified script.
+3. At the first prompt enter the **SMTP Login** shown on Brevo's SMTP
+   settings page (not your normal account email). At the second prompt
+   enter the **SMTP key**. The key input is hidden and is never written
+   to a file, chat, repository or command-line argument.
+4. Check the existing Gmail inbox receiving `admin@vimvitae.net` and
+   Brevo's transactional email events. SMTP acceptance does not guarantee
+   actual delivery.
+
+The script defaults to **offline/no send** unless `-Send` is specified.
+It connects to `smtp-relay.brevo.com:587` using STARTTLS, and sends only
+from the verified `noreply@vimvitae.net` sender. No production services,
+databases or VPN peers are touched.
+
+If the test fails, report only **"test failed"**, not the SMTP key or
+raw server exception. Verify that Brevo has activated transactional SMTP
+sending, and check that the local network permits port 587.
+
 ## Checks (no live VPN modifications)
 
 `scripts/brevo_smtp_check.py` uses only Python's standard library.
