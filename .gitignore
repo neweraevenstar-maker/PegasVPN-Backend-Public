@@ -1,0 +1,34 @@
+# Keep secrets and runtime files out of Git
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.p8
+*.mobileprovision
+id_rsa*
+id_ed25519*
+wg0.conf
+wireguard/*.conf
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+venv/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.bak
+*.backup
+.DS_Store
+
+# PegasVPN server-specific runtime data and historical copies
+data/
+*.bak.*
+*.backup.*
+*.db-*
+*.sqlite-*
+*.sqlite3-*
+*.pid

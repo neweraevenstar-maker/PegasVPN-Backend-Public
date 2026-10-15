@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodic Apple Store subscription reconciliation
+
+[Timer]
+OnBootSec=20min
+OnUnitActiveSec=6h
+AccuracySec=10min
+Persistent=true
+Unit=pegasvpn-apple-reconcile.service
+
+[Install]
+WantedBy=timers.target

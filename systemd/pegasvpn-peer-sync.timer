@@ -1,0 +1,12 @@
+[Unit]
+Description=Check PegasVPN paid entitlement and WireGuard peer state
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+AccuracySec=15s
+Persistent=true
+Unit=pegasvpn-peer-sync.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,8 @@
+# API runtime
+fastapi>=0.110,<1
+uvicorn>=0.30,<1
+PyJWT[crypto]>=2.8,<3
+email-validator>=2,<3
+# Apple-signed StoreKit transactions and server notifications.
+# 3.1.2 fixes stale OCSP response acceptance (GHSA-8f6j-263m-g72x).
+app-store-server-library>=3.1.2,<4

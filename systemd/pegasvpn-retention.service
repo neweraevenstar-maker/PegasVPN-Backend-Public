@@ -1,0 +1,15 @@
+[Unit]
+Description=PegasVPN expired operational data cleanup
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/onetapvpn-api
+EnvironmentFile=-/etc/onetapvpn/pegasvpn.env
+Environment=PEGASVPN_DEPLOYMENT=production
+ExecStart=/opt/onetapvpn-api/.venv/bin/python /opt/onetapvpn-api/retention.py
+TimeoutStartSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true

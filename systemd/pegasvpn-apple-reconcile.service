@@ -1,0 +1,17 @@
+[Unit]
+Description=PegasVPN authoritative Apple subscription reconciliation
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/onetapvpn-api
+EnvironmentFile=/etc/onetapvpn/pegasvpn.env
+Environment=PEGASVPN_DEPLOYMENT=production
+Environment=PEGASVPN_BILLING_ENV=production
+ExecStart=/opt/onetapvpn-api/.venv/bin/python /opt/onetapvpn-api/apple_reconcile.py
+TimeoutStartSec=180
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true

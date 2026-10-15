@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily PegasVPN operational data retention cleanup
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=24h
+AccuracySec=10min
+Persistent=true
+Unit=pegasvpn-retention.service
+
+[Install]
+WantedBy=timers.target
