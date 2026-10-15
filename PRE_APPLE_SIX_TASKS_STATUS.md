@@ -4,6 +4,8 @@ Public development continues in this repository. Imported source is from private
 
 ## Validation
 
+- An off-host backup tool is implemented on this feature branch: verified snapshot packaging, GnuPG AES-256 encryption, hidden passphrase input, ciphertext SHA-256, and isolated decryption/SQLite checks. Six new tests cover a real GnuPG round trip, wrong passphrase, corruption, traversal/links, permissions and overwrite prevention; all 80 offline tests passed locally. This is tool readiness only: the real encrypted production archive has not yet been created or exported. Destination approval and secure passphrase entry remain required.
+
 - All 74 offline tests passed locally in an isolated test environment.
 - Public GitHub Actions run 38693341515 succeeded on commit 6d48689130d10d451e710cc489e5c193e872ff5d. The previous private-repository billing gate did not prevent this public run. No payment or spending setting was changed.
 - Source was checked for common private-key/token patterns before publication; runtime data and operational backups are excluded.
@@ -14,7 +16,7 @@ Public development continues in this repository. Imported source is from private
 
 | Task | Actual state | Remaining gate |
 | --- | --- | --- |
-| Backend | PR #2 test fix included; public CI green; iOS source contract checked | Protect and reauthorize temporary SSH identity when next needed; installed iOS build verification; coordinated rollout approval |
+| Backend | PR #2 test fix included; public CI green; iOS source contract checked | SSH identity encrypted and permission-checked; reauthorize temporary access when next needed; installed iOS build verification; coordinated rollout approval |
 | SQLite and backups | Fresh SQLite and WireGuard snapshot verified; restore content matched; migration on restored duplicate passed | Encrypted off-host copy and off-host restore drill; live migration approval |
 | SMTP and email | Offline auth/delivery tests passed | Actual provider and private credentials; DNS and real OTP test; production approval |
 | Retention | Offline tests passed; policy requires review | Read-only candidate inventory; retention agreement; production cleanup/timer approval |
