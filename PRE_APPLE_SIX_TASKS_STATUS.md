@@ -16,7 +16,7 @@ Public development continues in this repository. Imported source is from private
 | --- | --- | --- |
 | Backend | PR #2 test fix included; public CI green; iOS source contract checked | Protect and reauthorize temporary SSH identity when next needed; installed iOS build verification; coordinated rollout approval |
 | SQLite and backups | Fresh SQLite and WireGuard snapshot verified; restore content matched; migration on restored duplicate passed | Encrypted off-host copy and off-host restore drill; live migration approval |
-| SMTP and email | Offline auth/delivery tests passed | Actual provider and private credentials; DNS and real OTP test; production approval |
+| SMTP and email | Brevo chosen; TLS-only OTP code, offline tests, SMTP check utility and DNS runbook prepared in `feat/brevo-smtp-otp` | Owner Brevo login; domain authentication without disturbing Cloudflare Email Routing; private SMTP key; real OTP delivery test; production approval |
 | Retention | Offline tests passed; policy requires review | Read-only candidate inventory; retention agreement; production cleanup/timer approval |
 | WireGuard and expiry | Client-key source contract and mocked tests passed | Installed-client compatibility; explicit approval for any peer/timer changes |
 | Data policy and recovery | Sequential execution plan documented | Provider/log retention verification; encrypted off-host retention and isolated disaster recovery drill |
